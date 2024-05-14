@@ -21,6 +21,11 @@ Matrix add_matrix(Matrix a, Matrix b)
     }
     c = create_matrix(a.rows, a.cols);
     for (i=0; i<c.rows; i++){
+        for (j=0; j<c.cols; j++){
+            c.data[i][j] = 0;
+        }
+    }
+    for (i=0; i<c.rows; i++){
         for (j=0; j<c.rows; j++){
             c.data[i][j] = a.data[i][j] + b.data[i][j];
         }
@@ -38,6 +43,11 @@ Matrix sub_matrix(Matrix a, Matrix b)
         return create_matrix(0, 0);
     }
     c = create_matrix(a.rows, a.cols);
+    for (i=0; i<c.rows; i++){
+        for (j=0; j<c.cols; j++){
+            c.data[i][j] = 0;
+        }
+    }
     for (i=0; i<c.rows; i++){
         for (j=0; j<c.rows; j++){
             c.data[i][j] = a.data[i][j] - b.data[i][j];
@@ -167,9 +177,10 @@ double trace_matrix(Matrix a)
 
 void print_matrix(Matrix a)
 {
-    for (int i = 0; i < a.rows; i++)
+    int i, j;
+    for (i = 0; i < a.rows; i++)
     {
-        for (int j = 0; j < a.cols; j++)
+        for (j = 0; j < a.cols; j++)
         {
             // 按行打印，每个元素占8个字符的宽度，小数点后保留2位，左对齐
             printf("%-8.2f", a.data[i][j]);
