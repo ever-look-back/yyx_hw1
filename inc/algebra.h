@@ -90,4 +90,19 @@ double trace_matrix(Matrix a);
 */
 void print_matrix(Matrix a);
 
+/**
+ * @brief 计算乘方：a的n次方
+ * @param a 底数a
+ * @param n 指数n
+ */
+double Pow(int a, int n);
+
+/**
+ * @brief 返回将矩阵a的第row行和第col列删除后得到的新矩阵
+ * @param a 待计算的矩阵a
+ * @param cow 行数row
+ * @param col 列数col
+ */
+Matrix cal_matrix(Matrix a, int row, int col);
+
 #endif
