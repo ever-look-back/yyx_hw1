@@ -97,7 +97,7 @@ Matrix transpose_matrix(Matrix a)
 }
 
 double det_matrix(Matrix a)
-{   /* 矩阵的秩 */
+{   /* 矩阵的行列式 */
     double result = 0;
     int i;
 
@@ -150,7 +150,7 @@ int rank_matrix(Matrix a)
     int rank = 0;
     int i, j, k;
     double factor;
-    Matrix r = create_matrix(a.rows, a.cols); // 创建矩阵副本
+    Matrix r = create_matrix(a.rows, a.cols);   // 创建矩阵副本
 
     /* 复制原矩阵 */
     for (i = 0; i < a.rows; i++) {
