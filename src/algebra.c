@@ -86,14 +86,14 @@ Matrix scale_matrix(Matrix a, double k)
 Matrix transpose_matrix(Matrix a)
 {
     int i, j, temp;
-    for (i=0; i<a.rows; i++){
-        for (j=i; j<a.cols; j++){
-            temp = a.data[i][j];
-            a.data[i][j] = a.data[j][i];
-            a.data[j][i] = temp;
+    Matrix b;
+    b = create_matrix(a.cols, a.rows);
+    for (i = 0; i < b.rows; i++){
+        for (j = 0; j < b.cols; j++){
+            b.data[i][j] = a.data[j][i];
         }
     }
-    return a;
+    return b;
 }
 
 double det_matrix(Matrix a)
