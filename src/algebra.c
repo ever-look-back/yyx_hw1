@@ -98,7 +98,7 @@ Matrix transpose_matrix(Matrix a)
 
 double det_matrix(Matrix a)
 {
-    double result = 1;
+    double result = 0;
     int i;
 
     if (a.rows != a.cols){
