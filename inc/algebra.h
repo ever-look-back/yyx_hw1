@@ -98,7 +98,7 @@ void print_matrix(Matrix a);
 double Pow(int a, int n);
 
 /**
- * @brief 返回将矩阵a的第row行和第col列删除后得到的新矩阵
+ * @brief 返回将矩阵a的第row行和第col列删除后得到的新矩阵(余子式)
  * @param a 待计算的矩阵a
  * @param cow 行数row
  * @param col 列数col

@@ -3,7 +3,7 @@
 #include <math.h>
 
 Matrix create_matrix(int row, int col)
-{
+{   /* 初始化矩阵元素为0 */
     Matrix m;
     int i, j;    
     m.rows = row;
@@ -17,7 +17,7 @@ Matrix create_matrix(int row, int col)
 }
 
 Matrix add_matrix(Matrix a, Matrix b)
-{
+{   /* 矩阵加法 */
     Matrix c;
     int i, j;
 
@@ -35,7 +35,7 @@ Matrix add_matrix(Matrix a, Matrix b)
 }
 
 Matrix sub_matrix(Matrix a, Matrix b)
-{
+{   /* 矩阵减法 */
     Matrix c;
     int i, j;
 
@@ -53,7 +53,7 @@ Matrix sub_matrix(Matrix a, Matrix b)
 }
 
 Matrix mul_matrix(Matrix a, Matrix b)
-{
+{   /* 矩阵乘法 */
     Matrix c;
     int i, j ,k;
 
@@ -73,7 +73,7 @@ Matrix mul_matrix(Matrix a, Matrix b)
 }
 
 Matrix scale_matrix(Matrix a, double k)
-{
+{   /* 矩阵的数乘 */
     int i, j;
     for (i=0; i<a.rows; i++){
         for (j=0; j<a.cols; j++){
@@ -84,7 +84,7 @@ Matrix scale_matrix(Matrix a, double k)
 }
 
 Matrix transpose_matrix(Matrix a)
-{
+{   /* 矩阵的转置 */
     int i, j, temp;
     Matrix b;
     b = create_matrix(a.cols, a.rows);
@@ -97,7 +97,7 @@ Matrix transpose_matrix(Matrix a)
 }
 
 double det_matrix(Matrix a)
-{
+{   /* 矩阵的秩 */
     double result = 0;
     int i;
 
@@ -191,11 +191,13 @@ double Pow(int a, int n)
 }
 
 Matrix cal_matrix(Matrix a, int row, int col)
-{
+{   /* 返回将矩阵a的第row行和第col列删除后得到的新矩阵 */
     Matrix b;
     int i, j;
 
     b = create_matrix(a.rows-1, a.cols-1);
+    row--;
+    col--;   
     for (i=0; i<b.rows; i++){
         for (j=0; j<b.cols; j++){
             if (i>=row && j>=col){
