@@ -146,13 +146,52 @@ Matrix inv_matrix(Matrix a)
 }
 
 int rank_matrix(Matrix a)
-{
-    // ToDo
-    return 0;
+{   /* 矩阵的秩 */
+    int rank = 0;
+    int i, j, k;
+    double factor;
+    Matrix r = create_matrix(a.rows, a.cols); // 创建矩阵副本
+
+    /* 复制原矩阵 */
+    for (i = 0; i < a.rows; i++) {
+        for (j = 0; j < a.cols; j++) {
+            r.data[i][j] = a.data[i][j];
+        }
+    }
+    /* 进行行操作以达到简化行阶梯形状 */
+    for (k = 0; k < a.cols; k++) {
+        int maxi = k;
+        /* 寻找绝对值最大的行 */
+        for (i = k + 1; i < a.rows; i++) {
+            if (fabs(r.data[i][k]) > fabs(r.data[maxi][k])) {
+                maxi = i;
+            }
+        }
+        /* 如果找到非零元素，说明当前列有贡献，秩+1 */
+        if (r.data[maxi][k] != 0) {
+            /* 交换当前行和最大值行 */
+            if (k != maxi) {
+                for (j = k; j < a.cols; j++) {
+                    double temp = r.data[k][j];
+                    r.data[k][j] = r.data[maxi][j];
+                    r.data[maxi][j] = temp;
+                }
+            }
+            rank++;
+            /* 使下方元素变为0 */
+            for (i = k + 1; i < a.rows; i++) {
+                factor = r.data[i][k] / r.data[k][k];
+                for (j = k; j < a.cols; j++) {
+                    r.data[i][j] -= r.data[k][j] * factor;
+                }
+            }
+        }
+    }
+    return rank;
 }
 
 double trace_matrix(Matrix a)
-{
+{   /* 矩阵的迹：对角线元素之和（方针）*/
     double result = 0;
     int i;
 
