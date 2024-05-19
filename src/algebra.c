@@ -153,7 +153,7 @@ int rank_matrix(Matrix a)
 
 double trace_matrix(Matrix a)
 {
-    double result = 1;
+    double result = 0;
     int i;
 
     if (a.rows != a.cols){
@@ -161,7 +161,7 @@ double trace_matrix(Matrix a)
         return 0;
     }
     for (i=0; i<a.rows; i++){
-        result *= a.data[i][i];
+        result += a.data[i][i];
     }
     return result;
 }
