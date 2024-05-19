@@ -5,8 +5,14 @@
 Matrix create_matrix(int row, int col)
 {
     Matrix m;
+    int i, j;    
     m.rows = row;
     m.cols = col;
+    for (i = 0; i < row; i++){
+        for (j = 0; j< col; j++){
+            m.data[i][j] = 0;
+        }
+    }
     return m;
 }
 
@@ -20,11 +26,6 @@ Matrix add_matrix(Matrix a, Matrix b)
         return create_matrix(0, 0);
     }
     c = create_matrix(a.rows, a.cols);
-    for (i=0; i<c.rows; i++){
-        for (j=0; j<c.cols; j++){
-            c.data[i][j] = 0;
-        }
-    }
     for (i=0; i<c.rows; i++){
         for (j=0; j<c.rows; j++){
             c.data[i][j] = a.data[i][j] + b.data[i][j];
