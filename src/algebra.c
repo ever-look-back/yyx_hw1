@@ -196,8 +196,6 @@ Matrix cal_matrix(Matrix a, int row, int col)
     int i, j;
 
     b = create_matrix(a.rows-1, a.cols-1);
-    row--;
-    col--;   
     for (i=0; i<b.rows; i++){
         for (j=0; j<b.cols; j++){
             if (i>=row && j>=col){
