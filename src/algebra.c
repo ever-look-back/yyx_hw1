@@ -45,11 +45,6 @@ Matrix sub_matrix(Matrix a, Matrix b)
     }
     c = create_matrix(a.rows, a.cols);
     for (i=0; i<c.rows; i++){
-        for (j=0; j<c.cols; j++){
-            c.data[i][j] = 0;
-        }
-    }
-    for (i=0; i<c.rows; i++){
         for (j=0; j<c.rows; j++){
             c.data[i][j] = a.data[i][j] - b.data[i][j];
         }
@@ -68,13 +63,8 @@ Matrix mul_matrix(Matrix a, Matrix b)
     }
     c = create_matrix(a.rows, b.cols);
     for (i=0; i<c.rows; i++){
-        for (j=0; j<c.cols; j++){
-            c.data[i][j] = 0;
-        }
-    }
-    for (i=0; i<c.rows; i++){
         for (j=0; j<a.cols; j++){
-            for (k=0; k<a.rows; k++){
+            for (k=0; k<a.cols; k++){
                 c.data[i][j] += a.data[i][k]*b.data[k][j];
             }
         }
