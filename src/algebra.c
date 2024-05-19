@@ -55,7 +55,7 @@ Matrix sub_matrix(Matrix a, Matrix b)
 Matrix mul_matrix(Matrix a, Matrix b)
 {   /* 矩阵乘法 */
     Matrix c;
-    int i, j ,k;
+    int i, j, k;
 
     if (a.cols != b.rows){
         printf("Error: The number of cols of matrix a must be equal to the number of rows of matrix b.\n");
@@ -115,8 +115,8 @@ double det_matrix(Matrix a)
 }
 
 Matrix inv_matrix(Matrix a)
-{
-    double det;   // 矩阵a的秩
+{   /* 逆矩阵 */
+    double det;   
     Matrix matrix;
     int i, j;
 
@@ -124,7 +124,7 @@ Matrix inv_matrix(Matrix a)
         printf("Error: The matrix must be a square matrix.\n");
         return create_matrix(0, 0);
     }
-    det = det_matrix(a);
+    det = det_matrix(a);   // 矩阵a的秩
     if (det == 0){   // 矩阵的秩为0，逆矩阵不存在
         printf("Error: The matrix is singular.\n");
         return create_matrix(0, 0);
@@ -133,7 +133,7 @@ Matrix inv_matrix(Matrix a)
     matrix = create_matrix(a.rows, a.cols);
     for (i=0; i<matrix.rows; i++){
         for (j=0; j<matrix.cols; j++){
-            matrix.data[i][j] = Pow(-1, i+j)*det_matrix(cal_matrix(a, i, j));
+            matrix.data[i][j] = Pow(-1, i+j)*det_matrix(cal_matrix(a, j, i));
         }
     }
     /* 计算逆矩阵并返回 */
@@ -191,7 +191,7 @@ double Pow(int a, int n)
 }
 
 Matrix cal_matrix(Matrix a, int row, int col)
-{   /* 返回将矩阵a的第row行和第col列删除后得到的新矩阵 */
+{   /* 返回将矩阵a的第row行和第col列删除后得到的新矩阵（row，cal从0开始计算） */
     Matrix b;
     int i, j;
 
