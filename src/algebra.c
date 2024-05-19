@@ -87,7 +87,7 @@ Matrix transpose_matrix(Matrix a)
 {
     int i, j, temp;
     for (i=0; i<a.rows; i++){
-        for (j=i+1; j<a.cols; j++){
+        for (j=i; j<a.cols; j++){
             temp = a.data[i][j];
             a.data[i][j] = a.data[j][i];
             a.data[j][i] = temp;
