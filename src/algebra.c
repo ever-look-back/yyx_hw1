@@ -109,7 +109,7 @@ double det_matrix(Matrix a)
         return a.data[0][0];
     }
     for (i=0; i<a.rows; i++){
-        result += Pow(-1,i)*a.data[0][i]*det_matrix(cal_matrix(a, 0, i));   // Leplace定理
+        result += Pow(-1,i)*a.data[0][i]*det_matrix(cal_matrix(a, 0, i));   // Laplace定理
     }
     return result;
 }
